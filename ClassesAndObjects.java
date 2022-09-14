@@ -1,29 +1,41 @@
 public class ClassesAndObjects {
     public static void main(String[] args) {
         Person person1 = new Person();
-        person1.setNameAndAge("Robby", 30);
-        person1.sayHello();
-        person1.speak();
-        int year1 = person1.calcYearsUntilRetirement();
-        System.out.println(year1 + " until retirement");
-
-        Person person2 = new Person();
-        person1.setNameAndAge("Robby", 30);
-        person1.sayHello();
-        person2.speak();
-        int year2 = person2.calcYearsUntilRetirement();
-        System.out.println(year2 + " until retirement");
+        person1.setName("Robby");
+        person1.setAge(30);
+        System.out.println("Name: " + person1.getName());
+        System.out.println("Age: " + person1.getAge());
     }
 }
 
 class Person {
-    String name;
-    int age;
+    private String name;
+    private int age;
 
-    void setNameAndAge(String name, int age) {
-        this.name = name;
-        this.age = age;
+    public void setName(String name) {
+        if (name.isEmpty()) {
+            System.out.println("Cannot enter empty name");
+        } else {
+            this.name = name;
+        }
     }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public void setAge(int age) {
+        if (age < 0) {
+            System.out.println("Cannot enter negative number to age");
+        } else {
+            this.age = age;
+        }
+    }
+
+    public int getAge() {
+        return this.age;
+    }
+
     int calcYearsUntilRetirement() {
         return 65 - age;
     }
