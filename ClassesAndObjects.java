@@ -3,14 +3,34 @@ public class ClassesAndObjects {
         Person person1 = new Person();
         person1.setName("Robby");
         person1.setAge(30);
-        System.out.println("Name: " + person1.getName());
-        System.out.println("Age: " + person1.getAge());
+        person1.speak();
+
+        Person person2 = new Person("Mike");
+        person2.speak();
+
+        Person person3 = new Person("Vito", 60);
+        person3.speak();
     }
 }
 
 class Person {
     private String name;
     private int age;
+
+    public Person() {
+        this.setName("John Doe");
+        this.setAge(0);
+    }
+
+    public Person(String name) {
+        this.setName(name);
+        this.setAge(0);
+    }
+
+    public Person(String name, int age) {
+        this.setName(name);
+        this.setAge(age);
+    }
 
     public void setName(String name) {
         if (name.isEmpty()) {
