@@ -1,70 +1,58 @@
 public class ClassesAndObjects {
     public static void main(String[] args) {
-        Person person1 = new Person();
-        person1.setName("Robby");
-        person1.setAge(30);
-        person1.speak();
+        Employee.job = "Sber Bank";
+        Employee e1 = new Employee("Bob", 40000);
+        Employee e2 = new Employee("Tom", 30000);
+        Employee e3 = new Employee("Jack", 30000);
 
-        Person person2 = new Person("Mike");
-        person2.speak();
+        e1.info();
+        e2.info();
+        e3.info();
+        Employee.getNumberOfEmployees();
 
-        Person person3 = new Person("Vito", 60);
-        person3.speak();
+        Employee.job = "Bereke Bank";
+
+        e1.info();
+        e2.info();
+        e3.info();
+        Employee.getNumberOfEmployees();
     }
 }
 
-class Person {
+class Employee {
     private String name;
-    private int age;
+    private int salary;
 
-    public Person() {
-        this.setName("John Doe");
-        this.setAge(0);
-    }
+    public static int count = 0;
+    public static String job;
 
-    public Person(String name) {
+    public Employee(String name, int salary) {
         this.setName(name);
-        this.setAge(0);
-    }
-
-    public Person(String name, int age) {
-        this.setName(name);
-        this.setAge(age);
+        this.setSalary(salary);
+        count++;
     }
 
     public void setName(String name) {
-        if (name.isEmpty()) {
-            System.out.println("Cannot enter empty name");
-        } else {
-            this.name = name;
-        }
+        this.name = name;
     }
 
     public String getName() {
         return this.name;
     }
 
-    public void setAge(int age) {
-        if (age < 0) {
-            System.out.println("Cannot enter negative number to age");
-        } else {
-            this.age = age;
-        }
+    public void setSalary(int salary) {
+        this.salary = salary;
     }
 
-    public int getAge() {
-        return this.age;
+    public int getSalary() {
+        return this.salary;
     }
 
-    int calcYearsUntilRetirement() {
-        return 65 - age;
+    public void info() {
+        System.out.println(this.name + " works at " + job + " for salary " + this.salary);
     }
 
-    void speak() {
-        System.out.println("My name is " + name + " and I am " + age);
-    }
-
-    void sayHello() {
-        System.out.println("Hello");
+    public static int getNumberOfEmployees() {
+        return count;
     }
 }
